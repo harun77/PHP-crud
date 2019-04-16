@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<!-- jQuery, jQuery validation -->
+<!-- jQuery validation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 <script src="./validation-rule.js"></script>
 
