@@ -17,6 +17,16 @@
         }
     }
 ?>
+
+<style>
+    input.error{
+        border: 1px red solid;
+    }
+    label.error{
+        color: red;
+    }
+</style>
+
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
@@ -24,7 +34,7 @@
         </div>
 
         <div class="card-body">
-            <form method="post">
+            <form method="post" id="registration">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="name" class="form-control" id="name" name="name" placeholder="Enter name" value="<?php echo $people->Name ?>">
@@ -40,4 +50,9 @@
         </div>
     </div>
 </div>
+
+<!-- jQuery, jQuery validation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+<script src="./validation-rule.js"></script>
+
 <?php require('footer.php') ?>
