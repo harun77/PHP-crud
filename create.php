@@ -13,33 +13,46 @@
         }
     }
 ?>
-<div class="container mt-5">
-<div class="card">
-    <div class="card-header">
-        <h1>Create</h1>
-    </div>
 
-    <div class="card-body">
-        <?php if(!empty($message)): ?>
-            <div class="alert alert-success">
-                <?php echo $message ?>
-            </div> 
-        <?php endif; ?>
-        <form method="post">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="name" class="form-control" id="name" name="name" placeholder="Enter name">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-info">Create a people</button>
-            </div>
-        </form>
+<style>
+    input.error{
+        border: 1px red solid;
+    }
+    label.error{
+        color: red;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1>Create</h1>
+        </div>
+
+        <div class="card-body">
+            <?php if(!empty($message)): ?>
+                <div class="alert alert-success">
+                    <?php echo $message ?>
+                </div> 
+            <?php endif; ?>
+            <form method="post" id="registration">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="name" class="form-control" id="name" name="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info">Create a people</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-</div>
+<!-- jQuery, jQuery validation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+<script src="./validation-rule.js"></script>
 
 <?php require('footer.php') ?>

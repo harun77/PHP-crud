@@ -6,6 +6,8 @@
     $statement->execute();
     $people = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
+
+
 <div class="container mt-5">
 <div class="card">
     <div class="card-header">
@@ -34,6 +36,38 @@
         </table>
     </div>
 </div>
+
+<!-- checkbox -->
+<script>
+    var flag = false;
+    function f(cb){
+        flag = cb.checked;
+        if(flag){
+            document.getElementById('xtra').style.display = "block";
+        } else {
+            document.getElementById('xtra').style.display = "none";
+        }
+    }
+</script>
+<input type="checkbox" id="cb" name="cb" onclick="f(this)">
+
+<div id="xtra" style="display: none">
+<form>
+    <div class="form-group">
+        <label for="formGroupExampleInput">Example label</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input" required>
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Another label</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input" required>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+</form>
+</div>
+<!-- end -->
+
 </div>
 
 <?php require('footer.php') ?>
