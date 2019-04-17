@@ -7,12 +7,15 @@
     $statement->execute([':id' => $id]);
     $people = $statement->fetch(PDO::FETCH_OBJ);
 
-    if(isset($_POST['name']) && isset($_POST['email'])){
+    if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['url']) && isset($_POST['phone'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $sql = 'UPDATE company SET Name=:name, Email=:email WHERE ID=:id';
+        $url = $_POST['url'];
+        $phone = $_POST['phone'];
+
+        $sql = 'UPDATE company SET Name=:name, Email=:email, URL=:url, Phone=:phone WHERE ID=:id';
         $statement = $connection->prepare($sql);
-        if($statement->execute([':name' => $name, ':email' => $email, ':id' => $id])){
+        if($statement->execute([':name' => $name, ':email' => $email, ':url' => $url, ':phone' => $phone, ':id' => $id])){
             header("Location: /test");
         }
     }
@@ -42,6 +45,14 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php echo $people->Email ?>">
+                </div>
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter url" value="<?php echo $people->URL ?>">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone no.</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" value="<?php echo $people->Phone ?>">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-info">Save</button>

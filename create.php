@@ -2,12 +2,15 @@
 <?php require('db.php') ?>
 <?php 
     $message = '';
-    if(isset($_POST['name']) && isset($_POST['email'])){
+    if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['url']) && isset($_POST['phone'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $sql = 'INSERT INTO company(Name, Email) VALUES(:name, :email)';
+        $url = $_POST['url'];
+        $phone = $_POST['phone'];
+
+        $sql = 'INSERT INTO company(Name, Email, URL, Phone) VALUES(:name, :email, :url, :phone)';
         $statement = $connection->prepare($sql);
-        if($statement->execute([':name' => $name, ':email' => $email])){
+        if($statement->execute([':name' => $name, ':email' => $email, ':url' => $url, ':phone' => $phone])){
             $message = 'Data inserted successfully';
             header("Location: /test");
         }
@@ -43,6 +46,14 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter url">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone no.</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-info">Create a people</button>
